@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Collaborative Canvas — Frontend</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="topbar">
+    <div class="tools">
+      <button id="tool-brush" class="tool active">Brush</button>
+      <button id="tool-eraser" class="tool">Eraser</button>
+      <label>Color <input id="color" type="color" value="#000000"></label>
+      <label>Width <input id="width" type="range" min="1" max="50" value="4"></label>
+      <button id="undo">Undo</button>
+      <button id="redo">Redo</button>
+    </div>
+    <div class="meta">
+      <div id="user-badge">You: <span id="my-id">-</span></div>
+      <div id="users-online">Online: <span id="users-count">0</span></div>
+      <div id="log-info">Log: <span id="log-length">0</span> ops</div>
+      <div id="last-op">Last op: <span id="last-op-id">-</span></div>
+    </div>
+  </div>
+
+  <div id="canvas-wrap">
+    <canvas id="draw-canvas"></canvas>
+    <canvas id="overlay-canvas"></canvas>
+    <div id="cursors-layer"></div>
+  </div>
+
+  <aside id="sidebar">
+    <h3>Users</h3>
+    <ul id="users-list"></ul>
+    <hr />
+    <h4>Notes</h4>
+    <p>This frontend expects a WebSocket server at <code>ws://localhost:3000</code> speaking a simple JSON protocol (see ARCHITECTURE.md).</p>
+  </aside>
+
+  <script src="canvas.js"></script>
+  <script src="websocket.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
